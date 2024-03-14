@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.text());
 
 app.get("/", (req, res) => {
     res.send("Hello from the server");
@@ -36,6 +37,17 @@ app.post("/addbook", async (req, res) => {
         
     }
 });
+
+app.delete("/delete/:bookid", async (req, res) => {
+    
+
+    let index = req.body;
+    
+    //newbooks holds the book that is removed and books will now only display the books not removed.
+    let newbooks = books.splice(index, 1);
+    
+    res.send(books);
+})
 
 app.listen(8080, () => {
     console.log("Server listening on port 8080");

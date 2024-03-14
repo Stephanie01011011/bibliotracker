@@ -11,7 +11,8 @@ const LOCALHOST = 'http://localhost:8080';
 function App() {
   const [books, setBooks] = useState();
   const [addShow, setAddShow] = useState(true);
-  
+  const [bookid, setBookid] = useState("hut");
+  let count = 0;
   
   
   
@@ -20,6 +21,12 @@ function App() {
     axios.get(LOCALHOST + '/books').then((res) =>{
       setBooks(res.data);
     });
+  };
+
+  const handleDelete = (bookid) => {
+    axios.delete(LOCALHOST + `/delete/${bookid}`, {data: bookid}).then((res) => {
+      setBooks(res.data)
+    })
   }
 
 
@@ -56,9 +63,16 @@ function App() {
            <p id='booktitle'>{book.title}</p>
            <p id='bookauthor'>{book.author}</p>
            <p id='bookrating'><span style={{fontSize: "18px"}}>Rating:</span> {book.rating}</p>
+           <button className='btn' id={book.id} onClick={(e) => {
+            let bid = e.target.id;
+            
+            handleDelete(bid)
+            //handleDelete();
+           }}>Delete</button>
           </div>
         
       )
+      
      })}
      </div>
      
