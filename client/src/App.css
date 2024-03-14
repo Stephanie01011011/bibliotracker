@@ -5,6 +5,7 @@ body{
   background-image: linear-gradient(rgb(22, 9, 49),rgb(255, 255, 255));
   background-repeat: no-repeat;
   min-height: 100vh;
+  
 }
 .nav{
   display: flex;
@@ -43,29 +44,46 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  
 }
 .herotext h1{
-  
+  font-size: 3em;
   text-align: left;
   color: white;
   
 }
 .herotext p{
-  
+  font-weight: bold;
+  color: white;
   text-align: left;
   line-height: 45px;
+}
+
+#herobtn{
+  width: 200px;
+  height: 60px;
+  background-color: white;
+  border-style: none;
+  font-size: 20px;
+  border-radius: 4px;
+  margin-top: 30px;
+}
+
+.items{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 .footer{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgba(35, 29, 83, 0.8);
+  background-color: white;
   position: relative;
-  
+  color: black;
   padding-bottom: 50px;
   width: 100%;
-  color: white;
+  
 }
 .footerlogo{
   width: 20%;
@@ -83,7 +101,7 @@ body{
 }
 .bookcontainer{
  display: grid;
- grid-template-columns: 450px 450px 450px;
+ grid-template-columns: 100px 100px 100px;
  grid-template-rows: auto;
  margin-left: auto;
  margin-right: auto;
@@ -92,6 +110,8 @@ body{
  justify-items: center;
  align-content: space-evenly;
  align-items: center;
+ gap: 50px;
+ 
 }
 #booktitle{
   font-size: 36px;
@@ -106,4 +126,50 @@ body{
 #navline{
   width: 85%;
   margin-bottom: 40px;
+}
+.bubble{
+  position: relative;
+  text-align: center;
+  top: -18%;
+  margin-bottom: -50px;
+  background-image: linear-gradient(rgb(134, 129, 159), rgb(44, 24, 94));
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-color: white;
+  width: 40%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 26px;
+  box-shadow: 6px 8px 36px 2px;
+  margin-bottom: 60px;
+}
+form input{
+  margin-bottom: 30px;
+  width: 70%;
+  text-align: left;
+  height: 40px;
+  font-size: 20px;
+}
+form label{
+  font-size: 24px;
+  width: 75%;
+  text-align: left;
+}
+#formbtn{
+  text-align: center;
+  height: 45px;
+  font-size: 24px;
+  background-color: rgb(44, 24, 94);
+  color: white;
+}
+#formhead{
+  color: white;
 }

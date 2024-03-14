@@ -1,16 +1,41 @@
 import express from "express";
 import cors from 'cors';
+import bodyParser from "body-parser";
+import axios from 'axios';
 
 const app = express();
+const LOCALHOST = 'http://localhost:8080';
 
-app.use(cors())
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("Hello from the server");
-})
+});
 app.get("/books", (req, res) => {
     res.send(books);
-})
+});
+app.post("/addbook", async (req, res) => {
+    try{
+      let newBook = {
+        id: books.length,
+        title: req.body.title,
+        author: req.body.author,
+        rating: req.body.rating
+      }
+      books.push(newBook);
+       
+        
+        res.sendStatus(201);
+        
+    } catch (err) {
+        console.log(err);
+        
+    }
+});
 
 app.listen(8080, () => {
     console.log("Server listening on port 8080");
@@ -19,14 +44,14 @@ app.listen(8080, () => {
 const books = [
     {
         id: 0,
-        title: "Here without you",
+        title: "Here Without You",
         author: "Holly Wood",
         rating: "4"
     },
     {
         id: 1,
-        title: "honey bay",
-        author: "Jennifer lays",
+        title: "Honey Bay",
+        author: "Jennifer Lays",
         rating: "3"
     },
     {
@@ -37,7 +62,7 @@ const books = [
     },
     {
         id: 3,
-        title: "The lonely forest",
+        title: "The Lonely Forest",
         author: "Franny May",
         rating: "2"
     }
