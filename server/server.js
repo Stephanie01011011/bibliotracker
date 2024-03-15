@@ -2,9 +2,11 @@ import express from "express";
 import cors from 'cors';
 import bodyParser from "body-parser";
 import axios from 'axios';
+import path from 'path';
 
 const app = express();
-const LOCALHOST = 'http://localhost:8080';
+const loc = window.location;
+const LOCALHOST = `${loc.protocol}//${loc.hostname}${loc.hostname === 'localhost' ? ':8080' : ''}`;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,6 +14,14 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.text());
+
+if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    })
+};
+
 
 app.get("/", (req, res) => {
     res.send("Hello from the server");

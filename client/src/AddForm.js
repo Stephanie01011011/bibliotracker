@@ -3,9 +3,10 @@ import Footer from "./components/Footer";
 import './App.css';
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const LOCALHOST = 'http://localhost:8080';
+const loc = window.location;
+const LOCALHOST = `${loc.protocol}//${loc.hostname}${loc.hostname === 'localhost' ? ':8080' : ''}`;
 
 function AddForm(){
     const [title, setTitle] = useState("");

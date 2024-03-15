@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
-const LOCALHOST = 'http://localhost:8080';
+const loc = window.location;
+const LOCALHOST = `${loc.protocol}//${loc.hostname}${loc.hostname === 'localhost' ? ':8080' : ''}`;
 
 
 function App() {
