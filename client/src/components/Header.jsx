@@ -8,11 +8,11 @@ function Header(props){
         <h1>Biblio Track</h1>
         </div>
         <div className="menu">
-          <Link to="/"><p>Home</p></Link>
+          <Link to="/" id="link" style={{textDecoration: 'none', color: 'white'}}><p>Home</p></Link>
           {props.add &&
 
           <div className="items">
-          <Link to="/bookform"><p>Add Book</p></Link>
+          <Link to="/bookform" id="link" style={{textDecoration: 'none', color: 'white'}}><p>Add Book</p></Link>
 
           <p onClick={props.bookCall}>See Collection</p>
           </div>

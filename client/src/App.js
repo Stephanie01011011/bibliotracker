@@ -49,7 +49,7 @@ function App() {
       
      
      {books &&
-     <h2>Your Collection</h2>}
+     <h2 id='bookHeadText'>Your Collection</h2>}
 
 
 <div className="bookcontainer">
